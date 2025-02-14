@@ -20,3 +20,28 @@ document.getElementById("noButton").addEventListener("click", function() {
 function displayMessage(message) {
     document.getElementById("valentineMessage").innerText = message;
 }
+
+document.getElementById("yesButton").addEventListener("click", function() {
+    displayMessage("Yes! You're my valentine! ❤️");
+    createHearts();
+});
+
+function createHearts() {
+    for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+        document.body.appendChild(heart);
+
+        let startX = Math.random() * window.innerWidth;
+        let duration = Math.random() * 2 + 2; // 2 to 4 seconds
+        let size = Math.random() * 20 + 10; // 10px to 30px
+
+        heart.style.left = `${startX}px`;
+        heart.style.fontSize = `${size}px`;
+        heart.style.animationDuration = `${duration}s`;
+
+        setTimeout(() => heart.remove(), duration * 1000);
+    }
+}
+
